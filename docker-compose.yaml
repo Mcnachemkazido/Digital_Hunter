@@ -34,6 +34,24 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     volumes:
       - data_es:/usr/share/elasticsearch/data
+
+
+  sql:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: asdf
+    ports:
+      - "3306:3306"
+
+  ui:
+    image: phpmyadmin
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: sql
+
 volumes:
   kafka_kraft:
   data_es:
