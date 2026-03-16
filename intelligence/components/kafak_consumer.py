@@ -1,6 +1,8 @@
 import json
 from confluent_kafka import Consumer
+from validation import Intel ,convert_to_dict
 
+from pydantic import BaseModel, ValidationError
 
 class KafkaConsumer:
     def __init__(self,bootstrap_servers,topic_name,group_id,logger):
@@ -25,10 +27,11 @@ class KafkaConsumer:
             if msg.error():
                 print("❌ Error:", msg.error())
                 continue
-
             value = msg.value().decode("utf-8")
-            # order = json.loads(value)
-            print(value)
+            data =convert_to_dict(value)
+            print(data)
+
+
 
 
 
