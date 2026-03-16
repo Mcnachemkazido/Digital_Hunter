@@ -23,13 +23,13 @@ class KafkaProducer:
         self.producer.flush()
         self.logger('INFO', f'i send new msg to topic: {self.topic_name}')
 
-    @staticmethod
+
     def delivery_report(self,err, msg):
         if err:
-            print(f"❌ Delivery failed: {err}")
+            self.logger('ERROR',f"❌ Delivery failed: {err}")
         else:
-            print(f"✅ Delivered {msg.value().decode("utf-8")}")
-            print(f"✅ Delivered to {msg.topic()} : partition {msg.partition()} : at offset {msg.offset()}")
+            self.logger('INFO',f"✅ Delivered {msg.value().decode("utf-8")}")
+            self.logger('INFO',f"✅ Delivered to {msg.topic()} : partition {msg.partition()} : at offset {msg.offset()}")
 
 
 

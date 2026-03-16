@@ -1,4 +1,3 @@
-from db_conn import db_conn
 
 class DbInit:
     def __init__(self,conn):
@@ -14,7 +13,7 @@ class DbInit:
             cursor.execute(
             """CREATE TABLE if not EXISTS  intel(
                 timestamp DATETIME ,
-                signal_id VARCHAR(50) UNIQUE,
+                signal_id VARCHAR(50),
                 entity_id VARCHAR(50),
      	        reported_lat FLOAT,
      	        reported_lon FLOAT,
@@ -24,14 +23,14 @@ class DbInit:
             cursor.execute(
                 """CREATE TABLE IF NOT EXISTS attack(
                 timestamp DATETIME,
-                attack_id VARCHAR(50) UNIQUE,
+                attack_id VARCHAR(50),
                 entity_id VARCHAR(50),
                 weapon_type  VARCHAR(30))""")
 
             cursor.execute(
                 """CREATE TABLE IF NOT EXISTS damage(
                 timestamp DATETIME,
-                attack_id VARCHAR(50) UNIQUE,
+                attack_id VARCHAR(50),
                 entity_id VARCHAR(50),
                 result  VARCHAR(30))""" )
 
@@ -44,10 +43,6 @@ class DbInit:
             	status VARCHAR(50))""")
 
             self.conn.commit()
-
-
-
-
 
 
 

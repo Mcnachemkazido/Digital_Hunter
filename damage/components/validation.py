@@ -6,7 +6,7 @@ class Intel(BaseModel):
     timestamp: str
     attack_id: str
     entity_id: str
-    weapon_type: str
+    result: str
 
 
 class Validation:
@@ -36,5 +36,13 @@ class Validation:
 
 
 
+
+
+# x = {"timestamp": "2026-03-16T10:19:42.892708+00:00",
+#      "signal_id": "f10a518e-070d-43e6-b195-26cabdc9c324", "entity_id": "TGT-010",
+#      "reported_lat": 31.883817,
+#      "reported_lon": 34.599941, "signal_type": "HUMINT", "priority_level": 3}
+#
+# y = "gsfghgs"
 
 

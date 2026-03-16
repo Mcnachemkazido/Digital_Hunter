@@ -1,9 +1,9 @@
 from components.kafak_consumer import KafkaConsumer
 from components.validation import Validation
-from components.attack_config import AttackConfig
+from components.damage_config import DamageConfig
 from shared.logger import log_event
 
-kafka_consumer = KafkaConsumer(AttackConfig.get_bootstrap_servers(),'attack','attack_group',log_event)
+kafka_consumer = KafkaConsumer(DamageConfig.get_bootstrap_servers(),'damage','damage_group',log_event)
 validation = Validation()
 
 

@@ -21,5 +21,3 @@ class DbConn:
 
 
 
-db_conn = DbConn('localhost',port=3306,user='root',password='asdf')
-

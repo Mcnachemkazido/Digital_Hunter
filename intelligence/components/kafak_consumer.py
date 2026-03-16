@@ -22,11 +22,10 @@ class KafkaConsumer:
             if msg is None:
                 continue
             if msg.error():
-                print("❌ Error:", msg.error())
+                self.logger('ERROR',"❌ Error:", msg.error())
                 continue
             value = msg.value().decode("utf-8")
             self.logger('INFO', f'I received a new message from topic {self.topic_name}')
-
             return value
 
 

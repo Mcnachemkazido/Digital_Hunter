@@ -47,5 +47,3 @@ def log_event(level, message, extra_info=None):
     except Exception as e:
         # 4. Fallback mechanism: Print to terminal if the connection fails
         print(f"⚠️  [LOCAL LOG - {level.upper()}] {message} | Connection Error: {e}")
-
-log_event("INFO",'tttttttttt')

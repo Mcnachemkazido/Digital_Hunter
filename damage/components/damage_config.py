@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv()
 
-class IntelConfig:
+class DamageConfig:
 
     @staticmethod
     def get_bootstrap_servers():
