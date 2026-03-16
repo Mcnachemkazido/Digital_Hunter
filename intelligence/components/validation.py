@@ -12,21 +12,32 @@ class Intel(BaseModel):
     priority_level: int
 
 
-def field_test(data):
-    try:
-        Intel(**data)
-        return data
-    except ValidationError:
-        return False
+
+class Validation:
+
+    def convert_to_dict(self,data):
+        try:
+            data = json.loads(data)
+            return True ,data
+        except json.decoder.JSONDecodeError:
+            return False ,'json.decoder.JSONDecodeError'
 
 
+    def field_test(self,data):
+        try:
+            Intel(**data)
+            return True, data
+        except ValidationError:
+            return False , 'ValidationError'
 
-def convert_to_dict(data):
-    try:
-        data = json.loads(data)
-        return data
-    except json.decoder.JSONDecodeError:
-        return False
+    def full_inspection(self,event):
+        dict_data = self.convert_to_dict(event)
+        if dict_data[0]:
+            data_correct = self.field_test(dict_data[1])
+            return data_correct
+        return dict_data
+
+
 
 
 
@@ -36,4 +47,6 @@ def convert_to_dict(data):
 #      "reported_lat": 31.883817,
 #      "reported_lon": 34.599941, "signal_type": "HUMINT", "priority_level": 3}
 #
-# print(field_test(x))
+# y = "gsfghgs"
+
+

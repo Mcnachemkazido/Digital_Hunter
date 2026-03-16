@@ -1,7 +1,7 @@
-import json
+from elasticsearch import Elasticsearch
 
-x = "{'a':'b'}"
-x = json.loads(x)
-print(x)
-print(type(x))
-print(type(x))
+es = Elasticsearch(['http://localhost:9200'])
+res = es.search(query={'match_all':{}},index='intel-logs',size=100)
+hits = res['hits']['hits']
+for hit in hits:
+    print(hit)

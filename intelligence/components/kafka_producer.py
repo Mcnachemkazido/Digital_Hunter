@@ -21,7 +21,9 @@ class KafkaProducer:
         )
 
         self.producer.flush()
+        self.logger('INFO', f'i send new msg to topic: {self.topic_name}')
 
+    @staticmethod
     def delivery_report(self,err, msg):
         if err:
             print(f"❌ Delivery failed: {err}")
@@ -32,7 +34,7 @@ class KafkaProducer:
 
 
 
-kafka_producer = KafkaProducer('localhost:9092','intel_signals_dlq','a')
+
 
 
 
