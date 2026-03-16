@@ -3,7 +3,7 @@ from components.kafka_producer import KafkaProducer
 from components.intel_config import IntelConfig
 from components.validation import Validation
 from shared.logger import log_event
-
+from db.main import push_to_db
 
 
 kafka_consumer = KafkaConsumer(IntelConfig.get_bootstrap_servers(),'intel','intel_group',log_event)
@@ -16,6 +16,9 @@ while True:
     data_send = validation.full_inspection(data)
     if not data_send[0]:
         kafka_producer.send(data_send[1] + '-' + data )
+    else:
+        push_to_db.insert_into_intel(data_send[1])
+
 
 
 
